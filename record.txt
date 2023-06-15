@@ -1,0 +1,119 @@
+Client
+
+INFO:
+    asyncua.client.client:connectw
+
+INFO:
+    __main__:
+        Children of root are: [
+            Node(NodeId(Identifier=85, NamespaceIndex=0, NodeIdType=<NodeIdType.Numeric: 2>)), 
+            Node(NodeId(Identifier=86, NamespaceIndex=0, NodeIdType=<NodeIdType.Numeric: 2>)), 
+            Node(NodeId(Identifier=87, NamespaceIndex=0, NodeIdType=<NodeIdType.Numeric: 2>))
+        ]
+
+INFO:
+    asyncua.client.client:
+        get_namespace_index <class 'list'> [
+            'http://opcfoundation.org/UA/', 
+            'urn:freeopcua:python:server', 
+            'http://examples.freeopcua.github.io'
+        ]
+
+INFO:
+    __main__:
+        index of our namespace is 2
+
+INFO:
+    __main__:
+        myvar is: 
+            Node(
+                NodeId(
+                    Identifier=13, 
+                    NamespaceIndex=2, 
+                    NodeIdType=<
+                        NodeIdType.FourByte: 1
+                    >
+                )
+            )
+
+INFO:
+    asyncua.client.ua_client.UaClient:
+        create_subscription success SubscriptionId 82
+
+INFO:
+    asyncua.common.subscription:
+        Subscription created 82
+
+INFO:
+    asyncua.client.ua_client.UaClient:
+        create_monitored_items
+
+INFO:
+    asyncua.common.subscription:
+        Publish callback called with result: 
+            PublishResult(
+                SubscriptionId=81, 
+                AvailableSequenceNumbers=[647], 
+                MoreNotifications=False, 
+                NotificationMessage_=NotificationMessage(
+                    SequenceNumber=647, 
+                    PublishTime=datetime.datetime(2023, 6, 12, 3, 41, 10, 372013), 
+                    NotificationData=[
+                        DataChangeNotification(
+                            MonitoredItems=[
+                                MonitoredItemNotification(
+                                    ClientHandle=201, 
+                                    Value=DataValue(
+                                        Value=Variant(
+                                            Value=-0.5582368340316811, 
+                                            VariantType=<VariantType.Double: 11>, 
+                                            Dimensions=None, 
+                                            is_array=False
+                                        ), 
+                                        StatusCode_=StatusCode(value=0), 
+                                        SourceTimestamp=None, 
+                                        ServerTimestamp=None, 
+                                        SourcePicoseconds=None, 
+                                        ServerPicoseconds=None
+                                    )
+                                )
+                            ], 
+                            DiagnosticInfos=[]
+                        )
+                    ]
+                ), 
+                Results=[], 
+                DiagnosticInfos=[]
+            )
+
+New data change event ns=2;i=13 -0.5582368340316811
+
+-----------------------------------------------------------------------------------------------------------
+Server
+
+INFO:
+    asyncua.server.uaprocessor:
+        Read request (
+            User(
+                role=<UserRole.User: 3>, 
+                name=None
+            )
+        )
+        
+INFO:
+    asyncua.server.subscription_service:
+        publish request with acks [
+            SubscriptionAcknowledgement(
+                SubscriptionId=81, 
+                SequenceNumber=635
+            )
+        ]
+
+
+
+
+
+
+INFO:asyncua.common.subscription:Publish callback called with result: PublishResult(SubscriptionId=78, AvailableSequenceNumbers=[], MoreNotifications=False, NotificationMessage_=NotificationMessage(SequenceNumber=1, PublishTime=datetime.datetime(2023, 6, 14, 14, 8, 9, 374228), NotificationData=[EventNotificationList(Events=[EventFieldList(ClientHandle=201, EventFields=[Variant(Value=b'2892f2881d2f41ecbccbe68790b43e1f', VariantType=<VariantType.ByteString: 15>, Dimensions=None, is_array=False), Variant(Value=NodeId(Identifier=2041, NamespaceIndex=0, NodeIdType=<NodeIdType.FourByte: 1>), VariantType=<VariantType.NodeId: 17>, Dimensions=None, is_array=False), Variant(Value=NodeId(Identifier=2253, NamespaceIndex=0, NodeIdType=<NodeIdType.FourByte: 1>), VariantType=<VariantType.NodeId: 17>, Dimensions=None, is_array=False), Variant(Value='Server', VariantType=<VariantType.String: 12>, Dimensions=None, is_array=False), Variant(Value=datetime.datetime(2023, 6, 14, 14, 8, 9, 278229), VariantType=<VariantType.DateTime: 13>, Dimensions=None, is_array=False), Variant(Value=datetime.datetime(2023, 6, 14, 14, 8, 9, 278229), VariantType=<VariantType.DateTime: 13>, Dimensions=None, is_array=False), Variant(Value=TimeZoneDataType(Offset=480, DaylightSavingInOffset=True), VariantType=<VariantType.ExtensionObject: 22>, Dimensions=None, is_array=False), Variant(Value=LocalizedText(Locale=None, Text='status changed: running'), VariantType=<VariantType.LocalizedText: 21>, Dimensions=None, is_array=False), Variant(Value=1, VariantType=<VariantType.UInt16: 5>, Dimensions=None, is_array=False)]), EventFieldList(ClientHandle=201, EventFields=[Variant(Value=b'2982f2f1220e46d6a2fb3d52e104840f', VariantType=<VariantType.ByteString: 15>, Dimensions=None, is_array=False), Variant(Value=NodeId(Identifier=2041, NamespaceIndex=0, NodeIdType=<NodeIdType.FourByte: 1>), VariantType=<VariantType.NodeId: 17>, Dimensions=None, is_array=False), Variant(Value=NodeId(Identifier=2253, NamespaceIndex=0, NodeIdType=<NodeIdType.FourByte: 1>), VariantType=<VariantType.NodeId: 17>, Dimensions=None, is_array=False), Variant(Value='Server', VariantType=<VariantType.String: 12>, Dimensions=None, is_array=False), Variant(Value=datetime.datetime(2023, 6, 14, 14, 8, 9, 278229), VariantType=<VariantType.DateTime: 13>, Dimensions=None, is_array=False), Variant(Value=datetime.datetime(2023, 6, 14, 14, 8, 9, 278229), VariantType=<VariantType.DateTime: 13>, Dimensions=None, is_array=False), Variant(Value=TimeZoneDataType(Offset=480, DaylightSavingInOffset=True), VariantType=<VariantType.ExtensionObject: 22>, Dimensions=None, is_array=False), Variant(Value=LocalizedText(Locale=None, Text='status changed: idle'), VariantType=<VariantType.LocalizedText: 21>, Dimensions=None, is_array=False), Variant(Value=1, VariantType=<VariantType.UInt16: 5>, Dimensions=None, is_array=False)])])]), Results=[], DiagnosticInfos=[])
+WARNING:__main__:Python: New event Event(["EventId:b'2892f2881d2f41ecbccbe68790b43e1f'", 'EventType:NodeId(Identifier=2041, NamespaceIndex=0, NodeIdType=<NodeIdType.FourByte: 1>)', 'SourceNode:NodeId(Identifier=2253, NamespaceIndex=0, NodeIdType=<NodeIdType.FourByte: 1>)', 'SourceName:Server', 'Time:2023-06-14 14:08:09.278229', 'ReceiveTime:2023-06-14 14:08:09.278229', 'LocalTime:TimeZoneDataType(Offset=480, DaylightSavingInOffset=True)', "Message:LocalizedText(Locale=None, Text='status changed: running')", 'Severity:1'])
+WARNING:__main__:Python: New event Event(["EventId:b'2982f2f1220e46d6a2fb3d52e104840f'", 'EventType:NodeId(Identifier=2041, NamespaceIndex=0, NodeIdType=<NodeIdType.FourByte: 1>)', 'SourceNode:NodeId(Identifier=2253, NamespaceIndex=0, NodeIdType=<NodeIdType.FourByte: 1>)', 'SourceName:Server', 'Time:2023-06-14 14:08:09.278229', 'ReceiveTime:2023-06-14 14:08:09.278229', 'LocalTime:TimeZoneDataType(Offset=480, DaylightSavingInOffset=True)', "Message:LocalizedText(Locale=None, Text='status changed: idle')", 'Severity:1'])
